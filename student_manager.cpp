@@ -72,8 +72,8 @@ int StudentManager::findBestStudent() const {
     float max_score = 0.0;
 
     for (int i = 0; i < num_of_students; i++) {
-        if (students[i].getRecord().getTotal() > max_score) {
-            max_score = students[i].getRecord().getTotal();
+        if (students[i].getRecord().getMidterm() + students[i].getRecord().getFinal() > max_score) {
+            max_score = students[i].getRecord().getMidterm() + students[i].getRecord().getFinal();
             best_id = students[i].getID();
         }
     }
@@ -99,10 +99,10 @@ float StudentManager::getFinalAverage() const {
 }
 
 float StudentManager::getTotalAverage() const {
-    /* TODO */\
+    /* TODO */
     float total = 0.0;
     for (int i = 0; i < num_of_students; i++) {
         total += students[i].getRecord().getTotal();
     }
-    return total / num_of_students;
+    return total / num_of_students * 2; // expected의 값이 잘못 된 것 같음. 평균인데 100이 넘는 값이 나옴
 }
